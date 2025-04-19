@@ -1,0 +1,239 @@
+.post-creation-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+}
+
+.post-creation-glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 3rem;
+  width: 100%;
+  width: 900px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.post-creation-header {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.post-creation-title {
+  color: white;
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-creation-subtitle {
+  color: #a0aec0;
+  font-size: 1.1rem;
+  margin-top: 0;
+}
+
+.icon-spacing {
+  margin-right: 12px;
+}
+
+.input-icon {
+  margin-right: 10px;
+  color: #4299e1;
+}
+
+.post-creation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+}
+
+.form-select, .form-textarea {
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: rgba(26, 32, 44, 0.7);
+  color: white;
+  width: 100%;
+}
+
+.form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 200px;
+}
+
+.image-upload-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.image-upload-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.5rem;
+  background-color: rgba(66, 153, 225, 0.1);
+  color: #4299e1;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  border: 1px dashed #4299e1;
+}
+
+.image-upload-label:hover {
+  background-color: rgba(66, 153, 225, 0.2);
+}
+
+.image-upload-input {
+  display: none;
+}
+
+.image-preview-container {
+  position: relative;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.image-preview {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.image-remove-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(229, 62, 62, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.image-remove-btn:hover {
+  background: #e53e3e;
+  transform: scale(1.1);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.cancel-btn, .submit-btn {
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+}
+
+.cancel-btn {
+  background-color: rgba(74, 85, 104, 0.3);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cancel-btn:hover {
+  background-color: rgba(74, 85, 104, 0.5);
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(66, 153, 225, 0.4);
+}
+
+.submit-btn:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .post-creation-glass-card {
+    padding: 2rem;
+    max-width: 95%;
+  }
+  
+  .post-creation-title {
+    font-size: 1.8rem;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .cancel-btn, .submit-btn {
+    width: 100%;
+  }
+}
