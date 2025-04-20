@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Posts by Community</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+        }
+        #posts {
+            margin-top: 20px;
+        }
+        .post {
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Get Posts by Community</h1>
+
+    <!-- Input for the communityId -->
+    <label for="communityId">Enter Community ID:</label>
+    <input type="text" id="communityId" placeholder="Enter Community ID (e.g., Node JS)">
+    <button onclick="getPosts()">Get Posts</button>
+
+    <!-- Container to display posts -->
+    <div id="posts"></div>
+
+    <script>
+        // Function to fetch posts by communityId and display them
+        function getPosts() {
+            const communityId = document.getElementById("communityId").value;
+
+            // Check if communityId is not empty
+            if (!communityId) {
+                alert("Please enter a community ID.");
+                return;
+            }
+
+            // Send GET request to the backend API
+            fetch(`http://localhost:8080/api/posts/by-community/${communityId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Error fetching data");
+                    }
+                    return response.json();
+                })
+                .then(posts => {
+                    // Clear previous posts
+                    const postsDiv = document.getElementById("posts");
+                    postsDiv.innerHTML = "";
+
+                    if (posts.length === 0) {
+                        postsDiv.innerHTML = "<p>No posts found for this community.</p>";
+                    } else {
+                        // Display posts
+                        posts.forEach(post => {
+                            const postDiv = document.createElement("div");
+                            postDiv.className = "post";
+                            postDiv.innerHTML = `
+                                <h3>Content: ${post.content}</h3>
+                                <p><strong>Type:</strong> ${post.type}</p>
+                                <p><strong>User Email:</strong> ${post.userEmail}</p>
+                                <p><strong>Image:</strong> ${post.imageUrl ? `<img src="${post.imageUrl}" alt="Post Image" width="100"/>` : "No image"}</p>
+                            `;
+                            postsDiv.appendChild(postDiv);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    document.getElementById("posts").innerHTML = "<p>Error fetching posts. Please try again later.</p>";
+                });
+        }
+    </script>
+
+</body>
+</html>
